@@ -24,7 +24,7 @@ window.addEventListener('load', function () {
       attribution: ''
   }).addTo(map);
 
-  var number = String(prompt("Enter number of fire stations"));
+  //var number = String(prompt("Enter number of fire stations"));
 
   let fires_url = 'http://213.133.90.205:5001/fires'
   fetch(fires_url)
@@ -56,10 +56,16 @@ window.addEventListener('load', function () {
     }
 
   })
+});
 
-
-
-  let url = 'http://213.133.90.205:5001/get?num=' + number;
+function sendData() {
+  firestations = document.getElementById("firestations").value;
+  country = document.getElementById("country").value;
+  //Weights
+  frp = document.getElementById('frp').checked ? "1":"0"
+  elevation = document.getElementById('frp').checked ? "1":"0"
+  vegetation = document.getElementById('frp').checked ? "1":"0"
+  let url = 'http://213.133.90.205:5001/get?num=' + firestations + "&weight_control=" + frp + "," + elevation + "," + vegetation
   console.log(url);
   fetch(url)
   .then(res => res.json())
@@ -68,13 +74,15 @@ window.addEventListener('load', function () {
     console.log("Done");
   })
   .then((out) => {
-    old_fire_stations = fire_stations["old"];
+    //old_fire_stations = fire_stations["old"];
     new_fire_stations = fire_stations["new"];
+    /*
     for (i = 0; i < old_fire_stations.length; i++) {
         L.marker([old_fire_stations[i][1], old_fire_stations[i][0]], {icon: greenIcon}).addTo(map) // EDIT marker coordinates
         .bindPopup("Current fire station \n" + String(old_fire_stations[i][1])+","+String(old_fire_stations[i][0])); // EDIT pop-up text message
         console.log("added!");
     }
+    */
 
     console.log("adding new fire stations");
     for (i = 0; i < new_fire_stations.length; i++) {
@@ -84,7 +92,6 @@ window.addEventListener('load', function () {
     }
   })
   .catch(err => { throw err });
-
 
   /*
   old_fire_stations = fire_stations["old"];
@@ -106,7 +113,7 @@ window.addEventListener('load', function () {
 
   /* Display a point marker with pop-up text */
 
-})
+}
 
 
 
