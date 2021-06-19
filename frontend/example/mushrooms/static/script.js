@@ -1,4 +1,6 @@
 /* Set up the initial map center and zoom level */
+var map;
+var marker = new Array();
 window.addEventListener('load', function () {
 
 
@@ -12,7 +14,7 @@ window.addEventListener('load', function () {
   });
 
   var map_div = document.getElementById("map");
-  var map = L.map(map_div, {
+  map = L.map(map_div, {
     center: [35.1264, 33.4299], // EDIT coordinates to re-center map
     zoom: 9,  // EDIT from 1 (zoomed out) to 18 (zoomed in)
     scrollWheelZoom: true,
@@ -71,7 +73,17 @@ window.addEventListener('load', function () {
   })
 });
 
+
+function markerDelAgain() {
+  for(i=0;i<marker.length;i++) {
+      map.removeLayer(marker[i]);
+      }
+  marker = [];
+
+}
+
 function sendData() {
+  markerDelAgain();
   firestations = document.getElementById("firestations").value;
   country = document.getElementById("country").value;
   //Weights
@@ -99,9 +111,15 @@ function sendData() {
 
     console.log("adding new fire stations");
     for (i = 0; i < new_fire_stations.length; i++) {
-        L.marker([new_fire_stations[i][1], new_fire_stations[i][0]]).addTo(map) // EDIT marker coordinates
-        .bindPopup("New fire station \n" + String(new_fire_stations[i][1])+","+String(new_fire_stations[i][0])); // EDIT pop-up text message
+      var LamMarker = new L.marker([new_fire_stations[i][1], new_fire_stations[i][0]])
+      .bindPopup("New fire station \n" + String(new_fire_stations[i][1])+","+String(new_fire_stations[i][0]));
+      marker.push(LamMarker);
+      map.addLayer(marker[i]);
+      /*
+        markers.push(L.marker([new_fire_stations[i][1], new_fire_stations[i][0]]).addTo(map) // EDIT marker coordinates
+        .bindPopup("New fire station \n" + String(new_fire_stations[i][1])+","+String(new_fire_stations[i][0]))); // EDIT pop-up text message
         console.log("added!");
+      */
     }
   })
   .catch(err => { throw err });
