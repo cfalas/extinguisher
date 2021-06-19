@@ -26,6 +26,19 @@ window.addEventListener('load', function () {
 
   //var number = String(prompt("Enter number of fire stations"));
 
+  let stations_url = 'http://213.133.90.205:5001/fire_stations'
+  fetch(stations_url)
+  .then(res => res.json())
+  .then((out) => {
+    station_locations = out["data"]
+    for (i = 0; i < station_locations.length; i++) {
+
+      L.marker([station_locations[i][1], station_locations[i][0]], {icon: greenIcon}).addTo(map) // EDIT marker coordinates
+      .bindPopup("Current fire station \n" + String(station_locations[i][1])+","+String(station_locations[i][0])); // EDIT pop-up text message
+    }
+  })
+
+
   let fires_url = 'http://213.133.90.205:5001/fires'
   fetch(fires_url)
   .then(res => res.json())
