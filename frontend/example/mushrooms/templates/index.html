@@ -17,8 +17,41 @@
 <body>
 
 
+
   <!-- Display the map and title with HTML division tags  -->
   <div id="map"></div>
+  <div class='res'>
+    <label for="standard-select"></label>
+    <b><h3>Country</h3></b>
+    <div class = "select">
+      <select name="country" id="country">
+        <option value="CY">Cyprus</option>
+        <option value="MA">Malta</option>
+      </select>
+    </div>
+      <h3>Firestations</h3>
+    <div class = "inputnum">
+      <input type="number" id = "firestations" name ="firestations" min = "1" max = "100" value = "5">
+    </div>
+    <h3>Weights</h3>
+    <div class = "weights">
+      <input type="checkbox" id="frp" checked>
+      <label for="vehicle1"> Fire Severity</label><br>
+      <input type="checkbox" id="elevation" checked>
+      <label for="vehicle2"> Elevation</label><br>
+      <input type="checkbox" id="vegetation" checked>
+      <label for="vehicle3"> Vegetation</label><br><br>
+      <input type="submit" value="Submit" onclick="sendData()">
+    </div>
+
+
+
+</div>
+
+
+
+
+  </div>
 
   <!-- Create the interactive map content with JavaScript (.js) -->
   <script>
@@ -32,6 +65,10 @@
       <i class="fa fa-bars"></i>
     </a>
   </div>
+
+
+
+
   <script>
   /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 function myFunction() {
