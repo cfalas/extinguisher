@@ -90,7 +90,7 @@ function sendData() {
   frp = document.getElementById('frp').checked ? "1":"0"
   elevation = document.getElementById('frp').checked ? "1":"0"
   vegetation = document.getElementById('frp').checked ? "1":"0"
-  let url = 'http://213.133.90.205:5001/get?num=' + firestations + "&weight_control=" + frp + "," + elevation + "," + vegetation
+  let url = 'http://213.133.90.205:5001/get?num=' + firestations + "&weight_control=" + frp + "," + elevation + "," + vegetation + "&country=" + country;
   console.log(url);
   fetch(url)
   .then(res => res.json())
