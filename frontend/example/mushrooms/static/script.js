@@ -1,6 +1,7 @@
 /* Set up the initial map center and zoom level */
 var map;
 var marker = new Array();
+var countries = {"Cyprus": [35.1264, 33.4299, 9], "Crete": [35.2401, 24.8093, 9]};
 window.addEventListener('load', function () {
 
 
@@ -86,11 +87,12 @@ function sendData() {
   markerDelAgain();
   firestations = document.getElementById("firestations").value;
   country = document.getElementById("country").value;
+  map.flyTo([countries[country][0], countries[country][1]], countries[country][2]);
   //Weights
   frp = document.getElementById('frp').checked ? "1":"0"
   elevation = document.getElementById('frp').checked ? "1":"0"
   vegetation = document.getElementById('frp').checked ? "1":"0"
-  let url = 'http://213.133.90.205:5001/get?num=' + firestations + "&weight_control=" + frp + "," + elevation + "," + vegetation
+  let url = 'http://213.133.90.205:5001/get?num=' + firestations + "&weight_control=" + frp + "," + elevation + "," + vegetation + "&country=" + country;
   console.log(url);
   fetch(url)
   .then(res => res.json())

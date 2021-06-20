@@ -11,10 +11,36 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="{% static 'script.js' %}"></script>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
   <!-- Position the map and title with Cascading Style Sheet (CSS) -->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+  	$(document).ready(function(){
+  		$("#myModal").modal('show');
+  	});
+  </script>
+
+
 </head>
 <body>
+
+  <div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Subscribe our Newsletter</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+				<p>Subscribe to our mailing list to get the latest updates straight in your inbox.</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -25,14 +51,16 @@
     <b><h3 style="margin-top: 0;">Country</h3></b>
     <div class = "select">
       <select name="country" id="country">
-        <option value="CY">Cyprus</option>
-        <option value="MA">Malta</option>
+        <option value="Cyprus">Cyprus</option>
+        <option value="Crete">Crete</option>
       </select>
     </div>
+    <br>
       <h3>Firestations</h3>
     <div class = "inputnum">
       <input type="number" id="firestations" name="firestations" min="1" max="100" value="5" style="width: 100%;">
     </div>
+    <br>
     <h3>Weights</h3>
     <div class = "weights">
       <input type="checkbox" id="frp" checked>
@@ -40,8 +68,10 @@
       <input type="checkbox" id="elevation" checked>
       <label for="vehicle2"> Elevation</label><br>
       <input type="checkbox" id="vegetation" checked>
-      <label for="vehicle3"> Vegetation</label><br><br>
-      <input type="submit" value="Submit" onclick="sendData()">
+      <label for="vehicle3"> Vegetation</label><br>
+      <input type="checkbox" id="population" checked>
+      <label for="vehicle4"> Population Density</label><br><br>
+      <input type="submit" value="Optimize" onclick="sendData()">
     </div>
 
 
@@ -58,9 +88,11 @@
 
   </script>
   <div class="topnav" id="myTopnav">
+    <h1 style="display:inline-block;color:white;font-size:150%;font-align:center;padding-top: 10px;padding-left:10px;align-content: center;">Extinguisher</h1>
+    <h2 style="display:inline-block;font-size:50%;color:#d3d3d3;padding-left:10px;padding-top:5px;">      optimizing fire station locations to prevent fires</h2>
     <a href="#home" class="active">Home</a>
-    <a href="#about">About</a>
-    <a href="https://www.github.com/cfalas/extinguisher">Github</a>
+    <!-- <a href="#about">About</a> -->
+    <a href="https://www.github.com/cfalas/extinguisher" target="_blank">Github</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
       <i class="fa fa-bars"></i>
     </a>
