@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>leaflet-map-simple</title>
+  <title>Extinguisher</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
   {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+  <link rel="icon" href="{% static 'favicon2.svg' %}">
   <!-- Load Leaflet code library: see http://leafletjs.com/download.html -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
@@ -83,11 +84,15 @@
 
   </div>
 
-  <!-- Create the interactive map content with JavaScript (.js) -->
+  <!-- Create the interactive map content with JavaScript (.js)
+  {% static 'logo.png' %}-->
   <script>
 
   </script>
   <div class="topnav" id="myTopnav">
+    <div class="logo">
+      <href="#" class="pull-left" style="width:40%;display:inline-block;padding-right:110px;"><img src={% static 'logo.png' %} style="width:6%; display:inline;">
+    </div>
     <h1 style="display:inline-block;color:white;font-size:150%;font-align:center;padding-top: 10px;padding-left:10px;align-content: center;">Extinguisher</h1>
     <h2 style="display:inline-block;font-size:50%;color:#d3d3d3;padding-left:10px;padding-top:5px;">      optimizing fire station locations to prevent fires</h2>
     <a href="#home" class="active">Home</a>
